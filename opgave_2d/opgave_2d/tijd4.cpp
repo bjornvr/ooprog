@@ -51,6 +51,8 @@ Tijdsduur& Tijdsduur::operator-=(const Tijdsduur& right) {
 }
 
 
+
+
 void Tijdsduur::check() {
     while (min >= 60) {
         min -= 60;
@@ -75,13 +77,13 @@ void Tijdsduur::print(ostream& o) const {
     }
 
     if (min == 1) {
-        o << " " << min << " minuut";
+        o << " " << min << " minuut" << endl;
     }
     else if (min > 9) {
-        o << min << " minuten";
+        o << min << " minuten" << endl;
     }
     else {
-        o << " " << min << " minuten";
+        o << " " << min << " minuten" << endl;
     }
  //   o << //oude standaardfunctie
 
@@ -106,17 +108,41 @@ ostream& operator<<(ostream& left, const Tijdsduur& right) {
     return left;
 }
 
-
+int getInput() {
+    int uurInput = 0;
+    int minInput = 0;
+    cout << "Voer het aantal uren in: ";
+    cin >> uurInput;
+    while (cin.fail()) {
+        cout << "error, try again";
+        cin.clear();
+        cin.ignore(265, '\n');
+        cin >> uurInput;
+    }
+    cout << "Voer het aantal minuten in: ";
+    cin >> minInput;
+    while (cin.fail()) {
+        cout << "error, try again";
+        cin.clear();
+        cin.ignore(265, '\n');
+        cin >> minInput;
+    }
+    cout << endl;
+    minInput = minInput + uurInput * 60;
+    return minInput;
+}
 
 int main() {
-    Tijdsduur t1(3, 50);        // t1 is 3 uur en 50 minuten
-    cout << "t1 = " << t1 << endl;
-    const Tijdsduur kw(15);     // kw is 15 minuten
-    cout << "kw = " << kw << endl;
-    t1 += kw;                   // Tel kw bij t1 op
-    cout << "t1 = " << t1 << endl;
-    Tijdsduur t2(t1 - kw);      // t2 is t1 min kw
-    cout << "t2 = " << t2 << endl;
+    cout << "Dit programma vraagt om 10 tijdsduren in te voeren, en telt deze op..." << endl;
+    Tijdsduur tijd(0,0);
+    for (int i = 0; i < 10; i++) {
+        int temp = getInput();
+        Tijdsduur inputTijd(temp);
+        inputTijd.print(cout);
+        tijd += inputTijd;
+    }
+    cout << "De tijd is:";
+    tijd.print(cout);
     cout << "Druk op enter..." << endl;
     cin.get();
     return 0;
