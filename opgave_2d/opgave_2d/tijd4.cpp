@@ -141,7 +141,7 @@ int main() {
         inputTijd.print(cout);
         tijd += inputTijd;
     }
-    cout << "De tijd is:";
+    cout << "De tijd is: ";
     tijd.print(cout);
     cout << "Druk op enter..." << endl;
     cin.get();
