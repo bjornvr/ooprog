@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1579008102 source:c:\users\bdoof\onedrive - de haagse hogeschool\documenten\atmel studio\codeblocks\serialusb\main.cpp
+	<stdio.h>
+	<windows.h>
+	<string.h>
+	<time.h>
+
